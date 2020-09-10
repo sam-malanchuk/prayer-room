@@ -88,5 +88,12 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  
+    return knex.schema
+        .dropTableIfExists('prayer_tags')
+        .dropTableIfExists('people_groups')
+        .dropTableIfExists('groups')
+        .dropTableIfExists('tags')
+        .dropTableIfExists('prayers')
+        .dropTableIfExists('people')
+        .dropTableIfExists('users');
 };
