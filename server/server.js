@@ -7,7 +7,7 @@ const helmet = require('helmet');
 const server = express();
 
 // use helmet 
-server.use(helmet());
+// server.use(helmet());
 // start server
 server.use(express.json());
 
