@@ -54,18 +54,18 @@ exports.up = function(knex) {
             .onUpdate('CASCADE');
     })
     .createTable('people_groups', tbl => {
-        tbl.integer('group_id')
-            .unsigned()
-            .notNullable()
-            .references('id')
-            .inTable('groups')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
         tbl.integer('person_id')
             .unsigned()
             .notNullable()
             .references('id')
             .inTable('people')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE');
+        tbl.integer('group_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .inTable('groups')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
     })
