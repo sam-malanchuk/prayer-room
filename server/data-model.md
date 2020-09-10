@@ -38,8 +38,8 @@ groups:
 -user_id (from table Users)
 
 people_groups:
--group_id (from table Groups)
 -person_id (from table People)
+-group_id (from table Groups)
 
 prayer_tags:
 -prayer_id (from table Prayers)
