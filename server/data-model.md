@@ -42,5 +42,5 @@ people_groups:
 -person_id (from table People)
 
 prayer_tags:
--group_id (from table Groups)
--person_id (from table People)
+-prayer_id (from table Prayers)
+-tag_id (from table Tags)
