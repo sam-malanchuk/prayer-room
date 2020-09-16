@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 
 // import any routers here
+const UsersRouter = require('./routers/users-router.js');
 
 // initiate the server
 const server = express();
@@ -12,6 +13,7 @@ const server = express();
 server.use(express.json());
 
 // use any imported routers here
+server.use('/users', UsersRouter);
 
 // basic get request
 server.get('/', (req, res) => {
