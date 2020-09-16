@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 
 // import any routers here
-const UsersRouter = require('./routers/users-router.js');
+const UsersRouter = require('./routers/usersRouter.js');
 
 // initiate the server
 const server = express();
