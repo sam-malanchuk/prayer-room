@@ -49,16 +49,16 @@ router.put('/:id', (req, res) => {
     const changes = req.body;
   
     Users.update(id, changes)
-    .then(updated => {
-        if(updated) {
-            res.status(201).json({ message: 'User has been updated' });
-        } else {
-            res.status(500).json({ message: 'User ID not found' });
-        }
-    })
-    .catch(err => {
-        res.status(500).json({ message: 'Failed to update user' });
-    });
+        .then(updated => {
+            if(updated) {
+                res.status(201).json({ message: 'User has been updated' });
+            } else {
+                res.status(500).json({ message: 'User ID not found' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ message: 'Failed to update user' });
+        });
 });
 
 // route to delete user by id
