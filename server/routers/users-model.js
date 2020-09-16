@@ -6,8 +6,8 @@ module.exports = {
     listUsers,
     getById,
     add,
-    // update,
-    // remove
+    update,
+    remove
 }
 
 // return a list of all the users
@@ -27,4 +27,14 @@ function add(user) {
             const id = ids[0];
             return db('users').where({id}).first();
         });
+}
+
+// update a users' information
+function update(id, changes) {
+    return db('users').where({ id }).update(changes);
+}
+
+// delete user by id
+function remove(id) {
+    return db('users').where({ id }).del();
 }

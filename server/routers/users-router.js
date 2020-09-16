@@ -43,4 +43,39 @@ router.post('/', (req, res) => {
         })
 })
 
+// route to update user information by id
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+  
+    Users.update(id, changes)
+    .then(updated => {
+        if(updated) {
+            res.status(201).json({ message: 'User has been updated' });
+        } else {
+            res.status(500).json({ message: 'User ID not found' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ message: 'Failed to update user' });
+    });
+});
+
+// route to delete user by id
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+  
+    Users.remove(id)
+    .then(count => {
+        if (count) {
+            res.json({ removed: count });
+        } else {
+            res.status(404).json({ message: 'Could not find user with given id' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ message: 'Failed to delete user' });
+    });
+});
+
 module.exports = router;
