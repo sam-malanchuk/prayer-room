@@ -5,9 +5,9 @@ const db = require('../data/db-config.js');
 module.exports = {
     getAll,
     togglePrayed,
-    // add,
-    // update,
-    // delete
+    add,
+    update,
+    remove
 }
 
 // return a list of all people with user ID
@@ -24,3 +24,21 @@ function togglePrayed(id) {
         })
 }
 
+// insert a new person into the database
+function add(person) {
+    return db('people').insert(person)
+        .then(ids => {
+            const id = ids[0];
+            return db('people').where({id}).first();
+        });
+}
+
+// update a person's information
+function update(id, changes) {
+    return db('people').where({ id }).update(changes);
+}
+
+// delete person by id
+function remove(id) {
+    return db('people').where({ id }).del();
+}

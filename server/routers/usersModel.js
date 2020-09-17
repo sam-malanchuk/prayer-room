@@ -29,7 +29,7 @@ function add(user) {
         });
 }
 
-// update a users' information
+// update a user's information
 function update(id, changes) {
     return db('users').where({ id }).update(changes);
 }
