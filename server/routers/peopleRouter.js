@@ -42,7 +42,8 @@ router.post('/', (req, res) => {
 
     person = {
         ...person,
-        added_date: createDate
+        added_date: createDate,
+        prayed_toggle: 0
     }
 
     People.add(person)
