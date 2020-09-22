@@ -5,6 +5,8 @@ const db = require('../data/db-config.js');
 module.exports = {
     getAll,
     add,
+    update,
+    remove
 }
 
 // return a list of all prayers with people ID
@@ -19,4 +21,14 @@ function add(prayer) {
             const id = ids[0];
             return db('prayers').where({id}).first();
         });
+}
+
+// update a prayer
+function update(id, changes) {
+    return db('prayers').where({ id }).update(changes);
+}
+
+// delete prayer by id
+function remove(id) {
+    return db('prayers').where({ id }).del();
 }
