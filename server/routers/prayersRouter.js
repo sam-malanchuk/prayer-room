@@ -16,3 +16,19 @@ router.get('/:id', (req, res) => {
             res.status(500).json({message: "Failed to get a list of the prayers"});
         });
 });
+
+// route for adding a new prayer
+router.post('/', (req, res) => {
+    // get the new user details from the request body object
+    var prayer = req.body;
+
+    Prayers.add(prayer)
+        .then(prayer => {
+            res.status(201).json(prayer);
+        })
+        .catch(err => {
+            res.status(500).json({message: "Failed to add a new prayer"});
+        })
+})
+
+module.exports = router;
