@@ -45,7 +45,9 @@ router.post('/', (req, res) => {
 
 // route to update user information by id
 router.put('/:id', (req, res) => {
+    // get the ID from the url
     const { id } = req.params;
+    // get the changes passed through the request body
     const changes = req.body;
   
     Users.update(id, changes)
