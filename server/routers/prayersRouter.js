@@ -31,4 +31,39 @@ router.post('/', (req, res) => {
         })
 })
 
+// route to update prayer by id
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+  
+    Prayers.update(id, changes)
+        .then(updated => {
+            if(updated) {
+                res.status(201).json({ message: 'Prayer has been updated' });
+            } else {
+                res.status(500).json({ message: 'Prayer ID not found' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ message: 'Failed to update prayer' });
+        });
+});
+
+// route to delete prayer by id
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+  
+    Prayers.remove(id)
+    .then(count => {
+        if (count) {
+            res.json({ removed: count });
+        } else {
+            res.status(404).json({ message: 'Could not find prayer with given id' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ message: 'Failed to delete prayer' });
+    });
+});
+
 module.exports = router;
