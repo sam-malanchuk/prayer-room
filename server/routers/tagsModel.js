@@ -18,3 +18,17 @@ function listTags() {
 function getById(id) {
     return db('tags').where({id}).first();
 }
+
+// add a new tag
+function add(tag) {
+    return db('tags').insert(tag)
+        .then(ids => {
+            const id = ids[0];
+            return db('tags').where({id}).first();
+        });
+}
+
+// delete tag by id
+function remove(id) {
+    return db('tags').where({ id }).del();
+}
