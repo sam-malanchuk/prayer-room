@@ -4,6 +4,7 @@ const db = require('../data/db-config.js');
 // export model functions
 module.exports = {
     listTags,
+    listUsersTags,
     getById,
     add,
     remove
@@ -12,6 +13,11 @@ module.exports = {
 // return a list of all the tags
 function listTags() {
     return db('tags');
+}
+
+// return a list of all the tags of a specific user
+function listUsersTags(user_id) {
+    return db('tags').where({user_id}).first();
 }
 
 // return tag name by id
