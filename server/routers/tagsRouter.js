@@ -29,4 +29,35 @@ router.get('/:id', (req, res) => {
         })
 })
 
+// route for adding a new tag
+router.post('/', (req, res) => {
+    // get the tag name from the request body object
+    const tag = req.body;
+
+    Tags.add(tag)
+        .then(tag => {
+            res.status(201).json(tag);
+        })
+        .catch(err => {
+            res.status(500).json({message: "Failed to create new tag"});
+        })
+})
+
+// route to delete tag by id
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+  
+    Tags.remove(id)
+    .then(count => {
+        if (count) {
+            res.json({ removed: count });
+        } else {
+            res.status(404).json({ message: 'Could not find tag with given id' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ message: 'Failed to delete tag' });
+    });
+});
+
 module.exports = router;
