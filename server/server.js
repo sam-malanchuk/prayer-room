@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const UsersRouter = require('./routers/usersRouter.js');
 const PeopleRouter = require('./routers/peopleRouter.js');
 const PrayersRouter = require('./routers/prayersRouter.js');
+const TagsRouter = require('./routers/tagsRouter.js');
 
 // initiate the server
 const server = express();
@@ -18,6 +19,7 @@ server.use(express.json());
 server.use('/users', UsersRouter);
 server.use('/people', PeopleRouter);
 server.use('/prayers', PrayersRouter);
+server.use('/tags', TagsRouter);
 
 // basic get request
 server.get('/', (req, res) => {
